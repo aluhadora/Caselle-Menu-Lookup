@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CaselleProfiles.DTO;
 
-namespace Menu_Lookup
+namespace Menu_Lookup.MVC
 {
-  interface IView
+  public interface IView
   {
+    Profile Profile { get; set; }
   }
 }

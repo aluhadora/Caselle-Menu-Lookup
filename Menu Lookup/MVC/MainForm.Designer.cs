@@ -34,8 +34,9 @@
       this.label3 = new System.Windows.Forms.Label();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.panel1 = new System.Windows.Forms.Panel();
-      this.keyInformation1 = new Menu_Lookup.MVC.KeyInformation();
       this.panel2 = new System.Windows.Forms.Panel();
+      this.keyInformation1 = new Menu_Lookup.MVC.KeyInformation();
+      this.profileSelector1 = new CaselleProfiles.MVC.ProfileSelector.ProfileSelector();
       this.panel1.SuspendLayout();
       this.panel2.SuspendLayout();
       this.SuspendLayout();
@@ -85,21 +86,10 @@
       this.panel1.AutoScroll = true;
       this.panel1.Controls.Add(this.keyInformation1);
       this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.panel1.Location = new System.Drawing.Point(0, 100);
+      this.panel1.Location = new System.Drawing.Point(0, 125);
       this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(583, 375);
+      this.panel1.Size = new System.Drawing.Size(583, 350);
       this.panel1.TabIndex = 16;
-      // 
-      // keyInformation1
-      // 
-      this.keyInformation1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.keyInformation1.BackColor = System.Drawing.SystemColors.Window;
-      this.keyInformation1.Location = new System.Drawing.Point(21, 6);
-      this.keyInformation1.Name = "keyInformation1";
-      this.keyInformation1.Size = new System.Drawing.Size(553, 90);
-      this.keyInformation1.TabIndex = 15;
-      this.keyInformation1.SolutionClicked += new System.Action<Menu_Lookup.DTO.MenuItem, bool, bool>(this.LoadSolution);
       // 
       // panel2
       // 
@@ -108,10 +98,36 @@
       this.panel2.Controls.Add(this.label3);
       this.panel2.Controls.Add(this.comboBox1);
       this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel2.Location = new System.Drawing.Point(0, 0);
+      this.panel2.Location = new System.Drawing.Point(0, 25);
       this.panel2.Name = "panel2";
       this.panel2.Size = new System.Drawing.Size(583, 100);
       this.panel2.TabIndex = 17;
+      // 
+      // keyInformation1
+      // 
+      this.keyInformation1.Active = false;
+      this.keyInformation1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.keyInformation1.BackColor = System.Drawing.SystemColors.Window;
+      this.keyInformation1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.keyInformation1.IgnoreNextClick = false;
+      this.keyInformation1.Location = new System.Drawing.Point(21, 6);
+      this.keyInformation1.Name = "keyInformation1";
+      this.keyInformation1.Size = new System.Drawing.Size(553, 90);
+      this.keyInformation1.TabIndex = 15;
+      this.keyInformation1.UseVisualStyleBackColor = false;
+      this.keyInformation1.SolutionClicked += new System.Action<Menu_Lookup.DTO.MenuItem, bool, bool>(this.LoadSolution);
+      // 
+      // profileSelector1
+      // 
+      this.profileSelector1.CurrentProfile = null;
+      this.profileSelector1.Dock = System.Windows.Forms.DockStyle.Top;
+      this.profileSelector1.Location = new System.Drawing.Point(0, 0);
+      this.profileSelector1.Name = "profileSelector1";
+      this.profileSelector1.OptionsVisible = false;
+      this.profileSelector1.ProfileName = "";
+      this.profileSelector1.Size = new System.Drawing.Size(583, 25);
+      this.profileSelector1.TabIndex = 15;
       // 
       // MainForm
       // 
@@ -121,6 +137,7 @@
       this.ClientSize = new System.Drawing.Size(583, 475);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.panel2);
+      this.Controls.Add(this.profileSelector1);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MinimumSize = new System.Drawing.Size(599, 227);
       this.Name = "MainForm";
@@ -143,6 +160,7 @@
     private KeyInformation keyInformation1;
     private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.Panel panel2;
+    private CaselleProfiles.MVC.ProfileSelector.ProfileSelector profileSelector1;
   }
 }
 

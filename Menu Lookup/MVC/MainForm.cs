@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
+using CaselleProfiles.DTO;
+using Menu_Lookup.Settings;
 using Menu_Lookup.Utilities;
 using MenuItem = Menu_Lookup.DTO.MenuItem;
 
 namespace Menu_Lookup.MVC
 {
-  public partial class MainForm : Form
+  public partial class MainForm : Form, IView
   {
     private readonly Model _model;
     private IEnumerable<string> _descriptions;
@@ -17,6 +19,15 @@ namespace Menu_Lookup.MVC
     {
       _model = model;
       InitializeComponent();
+
+      profileSelector1.ProfileChanged += ProfileChanged;
+      _model.View = this;
+    }
+
+    private void ProfileChanged(Profile profile)
+    {
+      _model.Reload();
+      comboBox1_SelectedIndexChanged(this, new EventArgs());
     }
 
     private void MainForm_Load(object sender, EventArgs e)
@@ -102,6 +113,7 @@ namespace Menu_Lookup.MVC
 
     private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
+      if (comboBox1.SelectedItem == null) return;
       var description = comboBox1.SelectedItem.ToString();
       var matchingKeys = _model.MenuItems.Where(x => x.Descriptions.Contains(description)).OrderBy(x => x.Module).ToList();
       if (!matchingKeys.Any() && description.Length > 4)
@@ -186,5 +198,15 @@ namespace Menu_Lookup.MVC
     {
 
     }
+
+    #region Implementation of IView
+
+    public Profile Profile
+    {
+      get { return profileSelector1.CurrentProfile; }
+      set { profileSelector1.ProfileName = value != null ? value.Name : string.Empty; }
+    }
+
+    #endregion
   }
 }

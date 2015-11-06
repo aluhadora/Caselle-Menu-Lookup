@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CaselleProfiles.DTO;
 using Menu_Lookup.Settings;
 using Menu_Lookup.Utilities;
 
@@ -58,7 +57,7 @@ namespace Menu_Lookup.DTO
       get
       {
         var phoenix = Assembly.ToUpper().Contains(".MVC.DLL");
-        var startingPath = Path.Combine(Options.CodeFolder, @"MasterSln");
+        var startingPath = Path.Combine(Profile.Directory, @"MasterSln");
         var module = ModuleSolution.UppercaseFirst();
 
         if (phoenix)
@@ -81,9 +80,11 @@ namespace Menu_Lookup.DTO
       }
     }
 
-    public static MenuItem GenerateProtoItem(string key, string path, string name, string model, string zoomAttribute)
+    public Profile Profile { get; set; }
+
+    public static MenuItem GenerateProtoItem(Profile profile, string key, string path, string name, string model, string zoomAttribute)
     {
-      var item = new MenuItem();
+      var item = new MenuItem { Profile = profile};
       item.Descriptions = new List<string>();
       var keyParts = key.Split('-');
       if (keyParts.Count() == 2)
