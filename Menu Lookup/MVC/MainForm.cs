@@ -64,16 +64,18 @@ namespace Menu_Lookup.MVC
       if (e.KeyCode == Keys.Down)
       {
         if (ActiveControl == comboBox1) return;
+        if (ActiveControl == profileSelector1) return;
         if (keys.Count(x => x.Active) != 1) return;
-        SelectNextControl(keys.First(x => x.Active), true, false, false, true);
-        SelectKey((KeyInformation)ActiveControl);
+        SelectNextControl(keys.First(x => x.Active), true, true, false, true);
+        SelectKey(ActiveControl as KeyInformation);
       }
       else if (e.KeyCode == Keys.Up)
       {
         if (ActiveControl == comboBox1) return;
+        if (ActiveControl == profileSelector1) return;
         if (keys.Count(x => x.Active) != 1) return;
-        SelectNextControl(keys.First(x => x.Active), false, false, false, true);
-        SelectKey((KeyInformation)ActiveControl);
+        SelectNextControl(keys.First(x => x.Active), false, true, false, true);
+        SelectKey(ActiveControl as KeyInformation);
       }
       else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
       {
@@ -163,11 +165,13 @@ namespace Menu_Lookup.MVC
       SelectKey(keyInformation1);
     }
 
-    private void SelectKey(KeyInformation first)
+    private void SelectKey(KeyInformation info)
     {
+      if (info == null) return;
+
       foreach (KeyInformation key in panel1.Controls)
       {
-        key.Active = key == first;
+        key.Active = key == info;
         if (key.Active)
         {
           Focus();
@@ -192,11 +196,6 @@ namespace Menu_Lookup.MVC
     private void MainForm_Shown(object sender, EventArgs e)
     {
       comboBox1.Focus();
-    }
-
-    private void comboBox1_MouseClick(object sender, MouseEventArgs e)
-    {
-
     }
 
     #region Implementation of IView

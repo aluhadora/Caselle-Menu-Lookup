@@ -34,8 +34,8 @@
       this.label3 = new System.Windows.Forms.Label();
       this.comboBox1 = new System.Windows.Forms.ComboBox();
       this.panel1 = new System.Windows.Forms.Panel();
-      this.panel2 = new System.Windows.Forms.Panel();
       this.keyInformation1 = new Menu_Lookup.MVC.KeyInformation();
+      this.panel2 = new System.Windows.Forms.Panel();
       this.profileSelector1 = new CaselleProfiles.MVC.ProfileSelector.ProfileSelector();
       this.panel1.SuspendLayout();
       this.panel2.SuspendLayout();
@@ -79,7 +79,6 @@
       this.comboBox1.Size = new System.Drawing.Size(491, 21);
       this.comboBox1.TabIndex = 14;
       this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-      this.comboBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboBox1_MouseClick);
       // 
       // panel1
       // 
@@ -89,19 +88,7 @@
       this.panel1.Location = new System.Drawing.Point(0, 125);
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(583, 350);
-      this.panel1.TabIndex = 16;
-      // 
-      // panel2
-      // 
-      this.panel2.Controls.Add(this.label1);
-      this.panel2.Controls.Add(this.label2);
-      this.panel2.Controls.Add(this.label3);
-      this.panel2.Controls.Add(this.comboBox1);
-      this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panel2.Location = new System.Drawing.Point(0, 25);
-      this.panel2.Name = "panel2";
-      this.panel2.Size = new System.Drawing.Size(583, 100);
-      this.panel2.TabIndex = 17;
+      this.panel1.TabIndex = 2;
       // 
       // keyInformation1
       // 
@@ -118,6 +105,18 @@
       this.keyInformation1.UseVisualStyleBackColor = false;
       this.keyInformation1.SolutionClicked += new System.Action<Menu_Lookup.DTO.MenuItem, bool, bool>(this.LoadSolution);
       // 
+      // panel2
+      // 
+      this.panel2.Controls.Add(this.label1);
+      this.panel2.Controls.Add(this.label2);
+      this.panel2.Controls.Add(this.label3);
+      this.panel2.Controls.Add(this.comboBox1);
+      this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panel2.Location = new System.Drawing.Point(0, 25);
+      this.panel2.Name = "panel2";
+      this.panel2.Size = new System.Drawing.Size(583, 100);
+      this.panel2.TabIndex = 1;
+      // 
       // profileSelector1
       // 
       this.profileSelector1.CurrentProfile = null;
@@ -127,7 +126,8 @@
       this.profileSelector1.OptionsVisible = false;
       this.profileSelector1.ProfileName = "";
       this.profileSelector1.Size = new System.Drawing.Size(583, 25);
-      this.profileSelector1.TabIndex = 15;
+      this.profileSelector1.TabIndex = 0;
+      this.profileSelector1.TabStop = false;
       // 
       // MainForm
       // 
